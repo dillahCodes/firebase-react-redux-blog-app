@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.9](https://github.com/dillahCodes/firebase-react-redux-blog-app/compare/v0.0.8...v0.0.9) (2024-10-01)
+
+
+### Features
+
+* installed new tiptap text editor replacement react quill js ([41c125a](https://github.com/dillahCodes/firebase-react-redux-blog-app/commit/41c125acdcea489f7ad40a1bf33c513e15a2fb11))
+
 ### [0.0.8](https://github.com/dillahCodes/firebase-react-redux-blog-app/compare/v0.0.7...v0.0.8) (2024-10-01)
 
 
