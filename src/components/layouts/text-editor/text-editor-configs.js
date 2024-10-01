@@ -1,34 +1,34 @@
-// import Quill from "quill";
+import Quill from "quill";
 import "quill/dist/quill.snow.css";
 
-// // Custom Font Registration
-// const Font = Quill.import("attributors/class/font");
-// Font.whitelist = ["roboto-slab", "serif"];
-// Quill.register(Font, true);
+// Custom Font Registration
+const Font = Quill.import("attributors/class/font");
+Font.whitelist = ["roboto-slab", "serif"];
+Quill.register(Font, true);
 
-// // Custom Image Blot
-// const BlockEmbed = Quill.import("blots/block/embed");
-// class CustomImageBlot extends BlockEmbed {
-//   static create(value) {
-//     let node = super.create();
-//     node.setAttribute("src", value.url);
-//     if (value.id) {
-//       node.setAttribute("id", value.id);
-//     }
-//     return node;
-//   }
+// Custom Image Blot
+const BlockEmbed = Quill.import("blots/block/embed");
+class CustomImageBlot extends BlockEmbed {
+  static create(value) {
+    let node = super.create();
+    node.setAttribute("src", value.url);
+    if (value.id) {
+      node.setAttribute("id", value.id);
+    }
+    return node;
+  }
 
-//   static value(node) {
-//     return {
-//       url: node.getAttribute("src"),
-//       id: node.getAttribute("id"),
-//     };
-//   }
-// }
+  static value(node) {
+    return {
+      url: node.getAttribute("src"),
+      id: node.getAttribute("id"),
+    };
+  }
+}
 
-// CustomImageBlot.blotName = "custom-image";
-// CustomImageBlot.tagName = "img";
-// Quill.register(CustomImageBlot);
+CustomImageBlot.blotName = "custom-image";
+CustomImageBlot.tagName = "img";
+Quill.register(CustomImageBlot);
 
 // Configuration for the Text Editor
 export const textEditorConfig = {

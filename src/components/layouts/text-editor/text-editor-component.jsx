@@ -3,7 +3,7 @@ import "./style/content-quill-style.css";
 
 import { useQuill } from "react-quilljs";
 import { Content } from "antd/es/layout/layout";
-// import useTextEditor from "./hooks/use-text-editor";
+import useTextEditor from "./hooks/use-text-editor";
 import { textEditorConfig } from "./text-editor-configs";
 import PropTypes from "prop-types";
 
