@@ -1,4 +1,4 @@
-import Quill from "quill";
+// import Quill from "quill";
 import "quill/dist/quill.snow.css";
 
 // // Custom Font Registration
