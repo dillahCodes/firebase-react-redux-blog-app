@@ -26,8 +26,6 @@ const EditorArticle = () => {
     ignore: isIgnoreWarn,
   });
 
-  // console.log(isWarnUserIfLeavingPageActive);
-
   return (
     <Layout className="max-w-screen-md w-full mx-auto p-3  overflow-y-auto no-scrollbar">
       <section className="flex flex-col gap-4 h-fit">
