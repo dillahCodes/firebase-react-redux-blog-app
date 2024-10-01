@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.7](https://github.com/dillahCodes/firebase-react-redux-blog-app/compare/v0.0.6...v0.0.7) (2024-10-01)
+
+
+### Bug Fixes
+
+* **WIP:** temporary fix for text editor error in prod, 7th attempt fix error ([c73f315](https://github.com/dillahCodes/firebase-react-redux-blog-app/commit/c73f315e094494781c5a58ea26bc602498cc6d1d))
+
 ### [0.0.6](https://github.com/dillahCodes/firebase-react-redux-blog-app/compare/v0.0.5...v0.0.6) (2024-10-01)
 
 
