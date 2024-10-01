@@ -8,12 +8,12 @@ import { textEditorConfig } from "./text-editor-configs";
 import PropTypes from "prop-types";
 
 const EditorTextEditorArticle = ({ initialContent = "", onContentChange, userId, articleId, ...props }) => {
-  const { quill, quillRef } = useQuill(textEditorConfig);
+  // const { quill, quillRef } = useQuill(textEditorConfig);
   // useTextEditor({ quill, quillRef, initialContent, onContentChange, userId, articleId });
 
   return (
     <Content {...props} className="min-h-[100px] h-fit">
-      <div ref={quillRef} className="min-h-[100px] max-h-[300px] overflow-y-auto scrollbar-custom" />
+      {/* <div ref={quillRef} className="min-h-[100px] max-h-[300px] overflow-y-auto scrollbar-custom" /> */}
     </Content>
   );
 };
