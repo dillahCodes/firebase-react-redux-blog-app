@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.8](https://github.com/dillahCodes/firebase-react-redux-blog-app/compare/v0.0.7...v0.0.8) (2024-10-01)
+
+
+### Bug Fixes
+
+* error in text editor component, uninstalled react quill js library it's throw error in prod ([a6900cb](https://github.com/dillahCodes/firebase-react-redux-blog-app/commit/a6900cba759663b82464ffea3b1093df878f42a5))
+
 ### [0.0.7](https://github.com/dillahCodes/firebase-react-redux-blog-app/compare/v0.0.6...v0.0.7) (2024-10-01)
 
 
