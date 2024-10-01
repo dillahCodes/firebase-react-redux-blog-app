@@ -1,0 +1,5 @@
+@media screen and (max-width: 600px) {
+  .ant-tour {
+    width: 90% !important;
+  }
+}

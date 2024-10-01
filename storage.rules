@@ -1,0 +1,46 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /article-images/{userId}/{articleId}/{allPaths=**} {
+      
+      // Semua pengguna dapat membaca
+      allow read: if true;
+
+    
+      // Only allow uploads of image files that are less than 3MB
+      allow write: if request.resource.size < 3 * 1024 * 1024
+                   && request.resource.contentType.matches('image/.*')
+                   && request.auth != null
+                   && request.auth.uid == userId;
+
+      // Only allow delete if auth.uid samae with userId
+      allow delete: if request.auth != null 
+                    && request.auth.uid == userId;
+    }
+
+    match /article-images/{userId}/{articleId} {
+      // Only allow delete if auth.uid samae with userId
+      allow delete: if request.auth != null 
+                    && request.auth.uid == userId;
+    }
+
+
+    match /user-profile-images/{userId}/{allPaths=**} {
+      
+      // Semua pengguna dapat membaca
+      allow read: if true;
+
+    
+      // Only allow uploads of image files that are less than 500KB
+      allow write: if request.resource.size < 500 * 1024
+                   && request.resource.contentType.matches('image/.*')
+                   && request.auth != null
+                   && request.auth.uid == userId;
+
+      // Only allow delete if auth.uid samae with userId
+      allow delete: if request.auth != null 
+                    && request.auth.uid == userId;
+    }
+  }
+}

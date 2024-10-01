@@ -1,0 +1,24 @@
+/* this css for fix bug slider library bottom white space  */
+.slick-list .slick-track .slick-slide div {
+  line-height: 10px;
+}
+
+/* this css for change dots position */
+.slick-slider .slick-dots {
+  position: absolute;
+  width: fit-content;
+  bottom: 0;
+}
+
+/* this css for change slider dots active and not active color */
+.slick-dots li.slick-active button::before {
+  color: white;
+}
+.slick-dots li button:before {
+  opacity: 0.5;
+}
+
+/* this css for change dots witdh */
+.slick-dots li {
+  width: 3px;
+}

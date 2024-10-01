@@ -1,0 +1,11 @@
+.ant-drawer-body {
+  padding: 0 !important;
+}
+
+.ant-drawer-header {
+  padding: 12px !important;
+}
+
+.ant-drawer-close {
+  margin: 0 !important;
+}

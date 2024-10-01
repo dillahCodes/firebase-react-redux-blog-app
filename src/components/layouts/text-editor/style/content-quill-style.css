@@ -1,0 +1,168 @@
+/* editor content style */
+.ql-container.ql-snow {
+  min-height: 100px;
+  max-height: 300px;
+}
+
+/* toolbar style */
+.ql-toolbar.ql-snow {
+  top: -1rem;
+  background-color: #b8e986;
+  border-radius: 6px 6px 0 0;
+}
+
+/* container style */
+.ql-container.ql-snow {
+  border-radius: 0 0 6px 6px;
+}
+
+/* font family  */
+.ql-snow .ql-picker.ql-font .ql-picker-label::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item::before {
+  content: "roboto slab";
+}
+.ql-editor .ql-font-roboto-slab,
+.ql-editor h2 .ql-font-roboto-slab {
+  font-family: "Roboto Slab", serif;
+}
+
+/* font size */
+/* h2 */
+.ql-snow .ql-picker.ql-header .ql-picker-label[data-value="2"]::before,
+.ql-snow .ql-picker.ql-header .ql-picker-item[data-value="2"]::before {
+  content: "Judul 2";
+}
+
+/* h3 */
+.ql-snow .ql-picker.ql-header .ql-picker-label[data-value="3"]::before,
+.ql-snow .ql-picker.ql-header .ql-picker-item[data-value="3"]::before {
+  content: "Judul 3";
+}
+/* h4 */
+.ql-snow .ql-picker.ql-header .ql-picker-label[data-value="4"]::before,
+.ql-snow .ql-picker.ql-header .ql-picker-item[data-value="4"]::before {
+  content: "Judul 4";
+}
+/* h5 */
+.ql-snow .ql-picker.ql-header .ql-picker-label[data-value="5"]::before,
+.ql-snow .ql-picker.ql-header .ql-picker-item[data-value="5"]::before {
+  content: "Judul 5";
+}
+/* h6 */
+.ql-snow .ql-picker.ql-header .ql-picker-label[data-value="6"]::before,
+.ql-snow .ql-picker.ql-header .ql-picker-item[data-value="6"]::before {
+  content: "Judul 6";
+}
+/* normal */
+.ql-snow .ql-picker.ql-header .ql-picker-label::before,
+.ql-snow .ql-picker.ql-header .ql-picker-item::before {
+  content: "teks normal";
+}
+
+/* image  */
+.ql-snow .ql-editor img {
+  max-width: 300px;
+  margin: 8px 0;
+}
+
+/* h2,h3,h4,h5,h6 */
+.ql-editor h2,
+.ql-editor h3,
+.ql-editor h4,
+.ql-editor h5,
+.ql-editor h6 {
+  font-weight: bold;
+}
+
+.ql-editor a:visited {
+  color: #b8e986;
+}
+
+.ql-editor a {
+  color: #58942e;
+}
+
+/* blockquote style */
+.ql-editor blockquote {
+  quotes: initial;
+  border-radius: 4px;
+  width: fit-content;
+  max-width: 350px;
+  font-size: small !important;
+  padding: 1.5em 20px;
+  padding-right: 30px;
+  border-left: 5px solid #58942e !important;
+  background-color: #dcfab6;
+  font-style: italic;
+  color: #58942e;
+  position: relative;
+}
+
+.ql-editor blockquote::before {
+  content: "\275D";
+  font-size: 2em;
+  color: #58942e;
+  position: absolute;
+  left: 10px;
+  top: 0px;
+  line-height: 1;
+}
+
+.ql-editor blockquote::after {
+  content: "\275E";
+  font-size: 2em;
+  color: #58942e;
+  position: absolute;
+  bottom: -10px;
+  line-height: 1;
+}
+
+/* alogn content */
+.ql-editor .ql-align-center {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.ql-editor .ql-align-right {
+  text-align: right;
+  margin: 0 0 0 auto;
+}
+
+/* conde element styke */
+.ql-editor .ql-code-block-container {
+  background-color: rgb(35, 36, 31);
+  padding: 1em;
+  max-width: 640px;
+  min-width: fit-content;
+  margin: 0 auto;
+  overflow-x: auto;
+  border-radius: 6px;
+}
+
+.ql-editor .ql-code-block-container .ql-code-block {
+  white-space-collapse: pre-wrap !important;
+  white-space: pre-wrap !important;
+  min-width: 100% !important;
+  width: 100% !important;
+}
+
+.ql-editor .ql-code-block-container::-webkit-scrollbar {
+  width: 5px;
+}
+.ql-editor .ql-code-block-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+.ql-editor .ql-code-block-container::-webkit-scrollbar-thumb {
+  background: #58942e;
+  border-radius: 5px;
+}
+
+/* image style */
+.ql-editor img {
+  min-width: 100%;
+  max-height: 250px;
+  object-fit: cover;
+  margin: 0 auto !important;
+  display: block;
+  border-radius: 8px;
+}
