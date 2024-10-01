@@ -1,0 +1,7 @@
+#add-article-text-editor-article > div:first-child div[contenteditable="true"] {
+  display: none;
+}
+
+.ProseMirror:focus {
+  outline: none;
+}

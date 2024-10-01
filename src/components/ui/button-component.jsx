@@ -17,5 +17,5 @@ export const ButtonComponentWithComingSoon = withComingSoonMessage(ButtonCompone
 export const ButtonComponentWithAuthModal = withAuthModal(ButtonComponent);
 
 ButtonComponent.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
 };

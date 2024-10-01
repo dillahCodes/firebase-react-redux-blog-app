@@ -17,7 +17,7 @@ const initialState = {
   main_image_content: null,
   main_image_content_url: "",
 
-  article_content: "",
+  article_content: "<p>tulis idemu ... 💫</p> ",
 
   is_preview_page_active: false,
 };
