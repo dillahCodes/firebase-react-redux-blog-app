@@ -16,7 +16,7 @@ const EditorArticleTitle = ({ ...props }) => {
         placeholder="Judul artikel"
         size={isBrowser ? "large" : "middle"}
         className={classNames(
-          "bg-transparent placeholder:text-[#58942e] placeholder:opacity-[.5] font-roboto-slab text-base sm:text-xl placeholder:font-roboto-slab placeholder:text-xs placeholder:capitalize"
+          "bg-transparent  placeholder:text-[#58942e] placeholder:opacity-[.5] font-roboto-slab text-base sm:text-xl placeholder:font-roboto-slab placeholder:text-xs placeholder:capitalize"
         )}
       />
     </div>

@@ -1,6 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
 
+const defaultContentJson = {
+  type: "doc",
+  content: [
+    {
+      type: "paragraph",
+      content: [
+        {
+          type: "text",
+          text: "tulis idemu ✨",
+        },
+      ],
+    },
+  ],
+};
+
 // const articleId = uuidv4();
 const initialState = {
   article_id: "",
@@ -17,7 +32,8 @@ const initialState = {
   main_image_content: null,
   main_image_content_url: "",
 
-  article_content: "<p>tulis idemu ... 💫</p> ",
+  article_content: "",
+  article_content_json: defaultContentJson,
 
   is_preview_page_active: false,
 };
@@ -70,6 +86,10 @@ const postDataSlice = createSlice({
       state.main_image_content = action.payload;
     },
 
+    updateArticleContentJson: (state, action) => {
+      state.article_content_json = action.payload;
+    },
+
     updateMainImageContentUrl: (state, action) => {
       state.main_image_content_url = action.payload;
     },
@@ -99,6 +119,7 @@ export const {
   updateMainImageContent,
   updateMainImageContentUrl,
   updateArticleContent,
+  updateArticleContentJson,
   updateIsPreviewPageActive,
   resetPostDataState,
 } = postDataSlice.actions;

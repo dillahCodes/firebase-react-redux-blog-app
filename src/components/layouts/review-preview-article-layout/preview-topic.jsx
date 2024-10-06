@@ -1,6 +1,5 @@
 import ButtonComponent from "../../ui/button-component";
 import PropTypes from "prop-types";
-import "./style/preview-article-style.css";
 import useDetectLocation from "../../../hooks/use-detect-location";
 import { useNavigate } from "react-router-dom";
 

@@ -1,7 +1,6 @@
 import { Skeleton } from "antd";
 import classNames from "classnames";
 import PropTypes from "prop-types";
-import "./style/preview-article-style.css";
 
 const PreviewArticleMainImage = ({ mainImage }) => {
   //   const mainImage = useSelector((state) => state.postData.main_image_content_url);

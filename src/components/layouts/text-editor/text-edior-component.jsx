@@ -1,94 +1,96 @@
-import { EditorContent, EditorProvider, FloatingMenu, useEditor } from "@tiptap/react";
-import { Flex } from "antd";
-import { useCallback, useEffect } from "react";
-import StarterKit from "@tiptap/starter-kit";
+import { EditorContent, EditorProvider, useEditor } from "@tiptap/react";
+import { useEffect, useMemo } from "react";
 
 import "./style/text-editor-style.css";
+import "./style/text-editor-code-block-style.css";
+import "./style/text-editor-font-size-node-style.css";
+import "./style/text-editor-font-family-node-style.css";
+import "./style/text-editor-link-node-style.css";
+
 import { debounce } from "lodash";
-import ButtonComponent from "../../ui/button-component";
-import { MdFormatListBulleted } from "react-icons/md";
-import { LuHeading1, LuHeading2 } from "react-icons/lu";
 
 import PropTypes from "prop-types";
+import extensions from "./ekstension";
+import { myThemeConfigs } from "../../../theme/antd-theme";
+import { Flex } from "antd";
+import classNames from "classnames";
+import TextEditorMenuComponent from "./menu";
 
-const extensions = [StarterKit];
-const TextEditorComponent = ({ initialContent, handleOnChangeTextEdior, editorDebounce = 500 }) => {
+const TextEditorComponent = ({
+  initialContent,
+  handleHtmlValueOnchange,
+  handleJsonValueOnchange,
+  editorDebounce = 500,
+  isHeaderShow = false,
+  articleId,
+}) => {
   const editor = useEditor({
     extensions,
-    editorProps: {
-      attributes: {
-        spellcheck: "false",
-      },
-    },
+    content: initialContent,
   });
 
-  // initial content and text change
-  useEffect(() => {
-    if (editor) editor.commands.setContent(initialContent);
-  }, [editor, initialContent]);
-
-  // debounced function
-  //   eslint-disable-next-line
-  const debouncedHandleChange = useCallback(
-    debounce((html) => handleOnChangeTextEdior(html), editorDebounce),
-    [handleOnChangeTextEdior]
+  // debounced function using useMemo to ensure it doesn't recreate on every render
+  const debounceEditorChange = useMemo(
+    () =>
+      debounce(({ htmlValue, JsonValue }) => {
+        handleHtmlValueOnchange(htmlValue);
+        handleJsonValueOnchange(JsonValue);
+      }, editorDebounce),
+    [handleHtmlValueOnchange, handleJsonValueOnchange, editorDebounce]
   );
 
-  // handle text change with debounce
+  // Handle text change with debounce inside useEffect
   useEffect(() => {
     if (editor) {
-      editor.on("update", ({ editor }) => {
-        const html = editor.getHTML();
-        debouncedHandleChange(html);
-      });
-    }
+      const handleUpdate = ({ editor }) => {
+        const html = editor.view.dom.innerHTML;
+        const json = editor.getJSON();
+        debounceEditorChange({ htmlValue: html, JsonValue: json });
+      };
 
-    return () => {
-      editor?.off("update");
-      debouncedHandleChange.cancel();
-    };
-  }, [editor, debouncedHandleChange]);
+      // Add update event listener
+      editor.on("update", handleUpdate);
+
+      // Clean up on unmount
+      return () => {
+        editor.off("update", handleUpdate);
+        debounceEditorChange.cancel();
+      };
+    }
+  }, [editor, debounceEditorChange]);
 
   if (!editor) return null;
 
   return (
     <EditorProvider extensions={extensions}>
-      <FloatingMenu editor={editor} tippyOptions={{ duration: 100 }} className="mt-4 ml-3">
-        <Flex id="text-editor-floating-menu" gap="small" className="bg-[#fafff0] border border-black rounded-md p-2">
-          <ButtonComponent
-            icon={<LuHeading1 />}
-            type="primary"
-            size="small"
-            onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
-            className={editor.isActive("heading", { level: 1 }) ? "is-active" : "text-sm"}
-          />
-
-          <ButtonComponent
-            icon={<LuHeading2 />}
-            type="primary"
-            size="small"
-            onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
-            className={editor.isActive("heading", { level: 2 }) ? "is-active" : "text-sm"}
-          />
-
-          <ButtonComponent
-            icon={<MdFormatListBulleted />}
-            type="primary"
-            size="small"
-            onClick={() => editor.chain().focus().toggleBulletList().run()}
-            className={editor.isActive("bulletList") ? "is-active" : "text-sm"}
-          />
-        </Flex>
-      </FloatingMenu>
-      <EditorContent editor={editor} />
+      <Flex vertical gap="middle">
+        <div
+          className={classNames("w-full sticky  transition-all duration-300 top-0 z-10", {
+            "top-0": !isHeaderShow,
+            "top-16 ": isHeaderShow,
+          })}
+        >
+          <TextEditorMenuComponent articleId={articleId} editor={editor} />
+        </div>
+        <div
+          className="w-full min-h-[300px] border border-black p-2 rounded-md"
+          style={myThemeConfigs.siderBorderStyle}
+          onClick={() => editor.commands.focus()}
+        >
+          <EditorContent editor={editor} />
+        </div>
+      </Flex>
     </EditorProvider>
   );
 };
 
 TextEditorComponent.propTypes = {
-  initialContent: PropTypes.string,
-  handleOnChangeTextEdior: PropTypes.func,
+  initialContent: PropTypes.object,
+  handleHtmlValueOnchange: PropTypes.func,
+  handleJsonValueOnchange: PropTypes.func,
   editorDebounce: PropTypes.number,
+  articleId: PropTypes.string,
+  isHeaderShow: PropTypes.bool,
 };
 
 export default TextEditorComponent;

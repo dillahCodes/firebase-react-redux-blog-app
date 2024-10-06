@@ -1,0 +1,6 @@
+a[class="link-node"] {
+  color: #b8e986;
+}
+a[class="link-node"]:hover {
+  color: #b1a410;
+}

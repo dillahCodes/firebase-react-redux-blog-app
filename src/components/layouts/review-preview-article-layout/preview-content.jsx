@@ -1,6 +1,11 @@
 import { Typography } from "antd";
 import PropTypes from "prop-types";
-import "./style/preview-article-style.css";
+
+// node style
+import "./style/article-code-node-style.css";
+import "./style/article-image-node-style.css";
+import "./style/article-font-family-node-style.css";
+import "./style/article-font-size-node-style.css";
 
 const { Text } = Typography;
 const PreviewArticleContent = ({ content }) => {

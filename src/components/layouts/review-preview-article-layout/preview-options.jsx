@@ -7,7 +7,6 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import withComingSoonMessage from "../../hoc/with-coming-soon-message";
 import withAuthModal from "../../hoc/with-auth-modal";
-import "./style/preview-article-style.css";
 
 const { Text } = Typography;
 

@@ -3,7 +3,6 @@ import { Avatar, Flex, Typography } from "antd";
 import PropTypes from "prop-types";
 import calculateReadingTime from "../../../utils/calculate-reading-time";
 import PreviewArticleOptionsButtons from "./preview-options";
-import "./style/preview-article-style.css";
 import formatEpochToIndonesianDate from "../../../utils/convert-time";
 
 const { Text } = Typography;

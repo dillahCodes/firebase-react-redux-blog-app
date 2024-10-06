@@ -1,6 +1,5 @@
 import ButtonComponent from "../../ui/button-component";
 import PropTypes from "prop-types";
-import "./style/preview-article-style.css";
 
 const PreviewArticleTopicAdmin = ({ articletopic }) => {
   return (

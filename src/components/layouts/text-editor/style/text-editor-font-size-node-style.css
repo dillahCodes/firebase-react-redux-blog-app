@@ -1,0 +1,19 @@
+span[data-font-size="small"] {
+  font-size: 0.875rem /* 14px */;
+  line-height: 1.25rem /* 20px */;
+}
+
+span[data-font-size="medium"] {
+  font-size: 1rem /* 16px */;
+  line-height: 1.5rem /* 24px */;
+}
+
+span[data-font-size="large"] {
+  font-size: 1.125rem /* 18px */;
+  line-height: 1.75rem /* 28px */;
+}
+
+span[data-font-size="extra-large"] {
+  font-size: 1.25rem /* 20px */;
+  line-height: 1.75rem /* 28px */;
+}
