@@ -11,38 +11,18 @@ const compressAndUploadImage = (file, storageRef) => {
       quality: 0.6,
       convertTypes: ["image/png", "image/jpeg", "image/jpg", "image/webp"],
       convertSize: 0,
-      success(result) {
-        // Convert success callback to async function
-        (async () => {
-          try {
-            // Upload the compressed image to Firebase Storage
-            await uploadBytes(storageRef, result);
+      async success(result) {
+        try {
+          // Upload the compressed image to Firebase Storage
+          await uploadBytes(storageRef, result);
 
-            // Get the download URL of the compressed image
-            const downloadUrl = await getDownloadURL(storageRef);
-            resolve(downloadUrl);
-
-            if (!auth.currentUser.photoURL) {
-              // update profile auth
-              await reload(auth.currentUser);
-              await updateProfile(auth.currentUser, {
-                photoURL: downloadUrl,
-              });
-
-              // update in firestore
-              const userRef = collection(db, "users-role");
-              const userDocRef = query(userRef, where("user_id", "==", auth.currentUser.uid));
-              const querySnapShot = await getDocs(userDocRef);
-              const userDoc = querySnapShot.docs[0];
-              await updateDoc(userDoc.ref, {
-                photoUrl: downloadUrl,
-              });
-            }
-          } catch (error) {
-            console.error("Error during image upload:", error);
-            reject(error);
-          }
-        })();
+          // Get the download URL of the compressed image
+          const downloadUrl = await getDownloadURL(storageRef);
+          resolve(downloadUrl);
+        } catch (error) {
+          console.error("Error during image upload:", error);
+          reject(error);
+        }
       },
       error(error) {
         console.error("Error during image compression:", error);
@@ -50,6 +30,37 @@ const compressAndUploadImage = (file, storageRef) => {
       },
     });
   });
+};
+
+// Function to update user profile image in Firebase Auth and Firestore
+const updateUserProfileImage = async (downloadUrl) => {
+  try {
+    const { currentUser } = auth;
+
+    if (!currentUser.photoURL) {
+      // Reload user data and update Firebase Auth profile
+      await reload(currentUser);
+      await updateProfile(currentUser, { photoURL: downloadUrl });
+
+      // Update photo URL in Firestore
+      const userRef = collection(db, "users-role");
+      const userQuery = query(userRef, where("user_id", "==", currentUser.uid));
+      const querySnapShot = await getDocs(userQuery);
+
+      if (!querySnapShot.empty) {
+        const userDoc = querySnapShot.docs[0];
+        await updateDoc(userDoc.ref, { photoUrl: downloadUrl });
+      }
+    }
+
+    return {
+      success: true,
+      message: "Profile image successfully updated.",
+    };
+  } catch (error) {
+    console.error("Error updating profile image in Firestore:", error);
+    throw error;
+  }
 };
 
 // Custom hook to update profile image
@@ -60,23 +71,19 @@ const useUpdateProfileImage = () => {
       const storageRef = ref(storage, `user-profile-images/${auth.currentUser.uid}`);
 
       // Compress the image and upload it to Firebase Storage
-      await compressAndUploadImage(file, storageRef);
+      const downloadUrl = await compressAndUploadImage(file, storageRef);
 
-      setTimeout(() => {
-        window.location.reload();
-      }, 500);
+      // Update the profile image in Firebase Auth and Firestore
+      const result = await updateUserProfileImage(downloadUrl);
+      if (result.success) setTimeout(() => window.location.reload(), 500);
 
-      return {
-        success: true,
-        message: "foto profil berhasil diperbarui",
-      };
+      return result;
     } catch (error) {
-      // Log the error stack for detailed information
       console.error("Error during profile image update:", error.message);
 
       return {
         success: false,
-        message: "Terjadi kesalahan saat memperbarui gambar profil, silahkan coba lagi.",
+        message: "Failed to update profile image. Please try again.",
       };
     }
   };
