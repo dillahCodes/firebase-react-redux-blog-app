@@ -162,6 +162,15 @@ const TextEditorMenuComponent = ({ editor, articleId }) => {
         className="text-sm"
       />
 
+      {/* video */}
+      <ButtonComponentWithTooltip
+        key="video"
+        tooltipText="insert video"
+        icon={<LuVideo />}
+        type="primary"
+        onClick={() => handleSetVideo(editor)}
+      />
+
       {/* image menu */}
       <ButtonComponentWithTooltip
         key="image"
@@ -198,6 +207,69 @@ const TextEditorMenuComponent = ({ editor, articleId }) => {
         className={editor.isActive("codeBlock") ? "is-active bg-[#58942e] text-slate-100" : "text-sm"}
       />
 
+      {/* highlight */}
+      <HighlighterMenu editor={editor} />
+
+      {/* italic */}
+      <ButtonComponentWithTooltip
+        key="italic"
+        tooltipText="Italic"
+        icon={<LuItalic />}
+        type="primary"
+        onClick={() => editor.chain().focus().toggleItalic().run()}
+        className={editor.isActive("italic") ? "is-active bg-[#58942e] text-slate-100" : "text-sm"}
+      />
+
+      {/* strike */}
+      <ButtonComponentWithTooltip
+        key="strike"
+        tooltipText="strike"
+        icon={<LuStrikethrough />}
+        type="primary"
+        onClick={() => editor.chain().focus().toggleStrike().run()}
+        className={editor.isActive("strike") ? "is-active bg-[#58942e] text-slate-100" : "text-sm"}
+      />
+
+      {/* underline */}
+      <ButtonComponentWithTooltip
+        key="underline"
+        tooltipText="underline"
+        icon={<LuUnderline />}
+        type="primary"
+        onClick={() => editor.chain().focus().toggleUnderline().run()}
+        className={editor.isActive("underline") ? "is-active bg-[#58942e] text-slate-100" : "text-sm"}
+      />
+
+      {/* Bold */}
+      <ButtonComponentWithTooltip
+        key="Bold"
+        tooltipText="Bold"
+        icon={<LuBold />}
+        type="primary"
+        onClick={() => editor.chain().focus().toggleBold().run()}
+        className={editor.isActive("bold") ? "is-active bg-[#58942e] text-slate-100" : "text-sm"}
+      />
+
+      {/* subscript */}
+      <ButtonComponentWithTooltip
+        key="subsscript"
+        tooltipText="subsscript"
+        icon={<LuSubscript />}
+        type="primary"
+        onClick={() => editor.chain().focus().toggleSubscript().run()}
+        className={editor.isActive("subscript") ? "is-active bg-[#58942e] text-slate-100" : "text-sm"}
+      />
+
+      {/* superscript */}
+      <ButtonComponentWithTooltip
+        key="superscript"
+        tooltipText="superscript"
+        icon={<LuSuperscript />}
+        type="primary"
+        onClick={() => editor.chain().focus().toggleSuperscript().run()}
+        className={editor.isActive("superscript") ? "is-active bg-[#58942e] text-slate-100" : "text-sm"}
+      />
+
       {/* font menu */}
       <SelectWithTooltip
         tooltipText={"Font Family"}
@@ -228,78 +300,6 @@ const TextEditorMenuComponent = ({ editor, articleId }) => {
         }}
         options={fontSizeOptions}
         popupClassName="font-roboto-slab w-fit"
-      />
-
-      {/* highlight */}
-      <HighlighterMenu editor={editor} />
-
-      {/* italic */}
-      <ButtonComponentWithTooltip
-        key="italic"
-        tooltipText="Italic"
-        icon={<LuItalic />}
-        type="primary"
-        onClick={() => editor.chain().focus().toggleItalic().run()}
-        className={editor.isActive("italic") ? "is-active bg-[#58942e] text-slate-100" : "text-sm"}
-      />
-
-      {/* strike */}
-      <ButtonComponentWithTooltip
-        key="strike"
-        tooltipText="strike"
-        icon={<LuStrikethrough />}
-        type="primary"
-        onClick={() => editor.chain().focus().toggleStrike().run()}
-        className={editor.isActive("strike") ? "is-active bg-[#58942e] text-slate-100" : "text-sm"}
-      />
-
-      {/* subscript */}
-      <ButtonComponentWithTooltip
-        key="subsscript"
-        tooltipText="subsscript"
-        icon={<LuSubscript />}
-        type="primary"
-        onClick={() => editor.chain().focus().toggleSubscript().run()}
-        className={editor.isActive("subscript") ? "is-active bg-[#58942e] text-slate-100" : "text-sm"}
-      />
-
-      {/* superscript */}
-      <ButtonComponentWithTooltip
-        key="superscript"
-        tooltipText="superscript"
-        icon={<LuSuperscript />}
-        type="primary"
-        onClick={() => editor.chain().focus().toggleSuperscript().run()}
-        className={editor.isActive("superscript") ? "is-active bg-[#58942e] text-slate-100" : "text-sm"}
-      />
-
-      {/* underline */}
-      <ButtonComponentWithTooltip
-        key="underline"
-        tooltipText="underline"
-        icon={<LuUnderline />}
-        type="primary"
-        onClick={() => editor.chain().focus().toggleUnderline().run()}
-        className={editor.isActive("underline") ? "is-active bg-[#58942e] text-slate-100" : "text-sm"}
-      />
-
-      {/* Bold */}
-      <ButtonComponentWithTooltip
-        key="Bold"
-        tooltipText="Bold"
-        icon={<LuBold />}
-        type="primary"
-        onClick={() => editor.chain().focus().toggleBold().run()}
-        className={editor.isActive("bold") ? "is-active bg-[#58942e] text-slate-100" : "text-sm"}
-      />
-
-      {/* video */}
-      <ButtonComponentWithTooltip
-        key="video"
-        tooltipText="insert video"
-        icon={<LuVideo />}
-        type="primary"
-        onClick={() => handleSetVideo(editor)}
       />
     </Flex>
   );
