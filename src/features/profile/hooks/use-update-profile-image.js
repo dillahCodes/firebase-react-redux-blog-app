@@ -75,7 +75,7 @@ const useUpdateProfileImage = () => {
 
       // Update the profile image in Firebase Auth and Firestore
       const result = await updateUserProfileImage(downloadUrl);
-      if (result.success) setTimeout(() => window.location.reload(), 500);
+      // if (result.success) setTimeout(() => window.location.reload(), 500);
 
       return result;
     } catch (error) {
