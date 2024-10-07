@@ -1,10 +1,13 @@
 import { Flex, Select } from "antd";
+
 import PropTypes from "prop-types";
 import {
   LuAlignCenter,
   LuAlignJustify,
   LuAlignLeft,
   LuAlignRight,
+  LuBold,
+  LuCode,
   LuHeading1,
   LuHeading2,
   LuHeading3,
@@ -19,16 +22,16 @@ import {
   LuSuperscript,
   LuUnderline,
   LuUndo,
+  LuVideo,
 } from "react-icons/lu";
-import { FaRegFileVideo } from "react-icons/fa6";
-import { myThemeConfigs } from "../../../../theme/antd-theme";
-import { ButtonComponentWithTooltip } from "../../../ui/button-component";
 import useUser from "../../../../features/auth/hooks/use-user";
-import handleUploadImage from "../handler/handle-upload-image";
-import handleSetLink from "../handler/handle-set-link";
+import { myThemeConfigs } from "../../../../theme/antd-theme";
 import withTooltip from "../../../hoc/with-tooltip";
-import HighlighterMenu from "./highlighter-menu";
+import { ButtonComponentWithTooltip } from "../../../ui/button-component";
+import handleSetLink from "../handler/handle-set-link";
 import handleSetVideo from "../handler/handle-set-video";
+import handleUploadImage from "../handler/handle-upload-image";
+import HighlighterMenu from "./highlighter-menu";
 
 const SelectWithTooltip = withTooltip(Select);
 const TextEditorMenuComponent = ({ editor, articleId }) => {
@@ -167,7 +170,8 @@ const TextEditorMenuComponent = ({ editor, articleId }) => {
         tooltipText="Insert Image"
         onClick={() => {
           handleUploadImage({ userId: user.uid, articleId }).then((res) => {
-            if (res.success) editor.chain().focus().setImage({ src: res.imageUrl, alt: res.oldFileName }).run();
+            if (res.success)
+              editor.chain().focus().setImage({ src: res.imageUrl, alt: res.oldFileName, id: res.newImageID }).run();
           });
         }}
         className="text-sm"
@@ -181,6 +185,17 @@ const TextEditorMenuComponent = ({ editor, articleId }) => {
         icon={<LuLink />}
         onClick={() => handleSetLink(editor)}
         className={editor.isActive("link") ? "is-active bg-[#58942e] text-slate-100" : "text-sm"}
+      />
+
+      {/* code menu */}
+      <ButtonComponentWithTooltip
+        key="code"
+        type="primary"
+        tooltipText="embed code"
+        icon={<LuCode />}
+        onClick={() => editor.chain().focus().toggleCodeBlock().run()}
+        // onClick={() => handleSetLink(editor)}
+        className={editor.isActive("codeBlock") ? "is-active bg-[#58942e] text-slate-100" : "text-sm"}
       />
 
       {/* font menu */}
@@ -268,11 +283,21 @@ const TextEditorMenuComponent = ({ editor, articleId }) => {
         className={editor.isActive("underline") ? "is-active bg-[#58942e] text-slate-100" : "text-sm"}
       />
 
+      {/* Bold */}
+      <ButtonComponentWithTooltip
+        key="Bold"
+        tooltipText="Bold"
+        icon={<LuBold />}
+        type="primary"
+        onClick={() => editor.chain().focus().toggleBold().run()}
+        className={editor.isActive("bold") ? "is-active bg-[#58942e] text-slate-100" : "text-sm"}
+      />
+
       {/* video */}
       <ButtonComponentWithTooltip
         key="video"
         tooltipText="insert video"
-        icon={<FaRegFileVideo />}
+        icon={<LuVideo />}
         type="primary"
         onClick={() => handleSetVideo(editor)}
       />

@@ -39,7 +39,7 @@ const handleImageFileLoad = async ({ file, userId, articleId, resolve, reject })
     convertTypes: ["image/png", "image/jpeg", "image/jpg", "image/webp"],
     convertSize: 1 * 1024 * 1024,
     success(compressedFile) {
-      uploadImageToFirebase({ image: compressedFile, userId, articleId, resolve, reject, oldFileName });
+      uploadImageToFirebase({ image: compressedFile, userId, articleId, resolve, reject, oldFileName, newImageID });
     },
     error: (error) => {
       console.error("Compression error:", error);
@@ -49,7 +49,7 @@ const handleImageFileLoad = async ({ file, userId, articleId, resolve, reject })
 };
 
 // Uploads the image to Firebase and inserts it into the Quill editor
-const uploadImageToFirebase = async ({ image, userId, articleId, resolve, reject, oldFileName }) => {
+const uploadImageToFirebase = async ({ image, userId, articleId, resolve, reject, oldFileName, newImageID }) => {
   try {
     const storagePath = `article-images/${userId}/${articleId}/${image.name}`;
     const firebaseStorageRef = ref(storage, storagePath);
@@ -61,6 +61,7 @@ const uploadImageToFirebase = async ({ image, userId, articleId, resolve, reject
       imageUrl,
       message: "Image uploaded successfully",
       oldFileName,
+      newImageID,
     });
   } catch (error) {
     console.error("Error uploading image to Firebase:", error.message);

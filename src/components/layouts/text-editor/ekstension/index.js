@@ -15,6 +15,7 @@ import Subscript from "@tiptap/extension-subscript";
 import Superscript from "@tiptap/extension-superscript";
 import Underline from "@tiptap/extension-underline";
 import VideoNode from "./video-node";
+import Heading from "@tiptap/extension-heading";
 
 // this ekstension for text editor
 // DOC: https://tiptap.dev/docs/editor/extensions/custom-extensions
@@ -22,13 +23,15 @@ const extensions = [
   StarterKit.configure({
     codeBlock: false,
     history: false,
-    heading: {
-      headingOptions: {
-        levels: [1, 2, 3, 4, 5],
-      },
-    },
     italic: false,
     strike: false,
+    heading: false,
+  }),
+  Heading.configure({
+    levels: [1, 2, 3, 4, 5],
+    HTMLAttributes: (attributes) => ({
+      "data-font-size": attributes.size || null,
+    }),
   }),
   CodeBlockLowlight.configure({
     lowlight,
@@ -37,6 +40,7 @@ const extensions = [
     },
     defaultLanguage: "js",
   }),
+  // Extension lainnya tetap sama
   TextAlign.configure({
     types: ["heading", "paragraph"],
   }),

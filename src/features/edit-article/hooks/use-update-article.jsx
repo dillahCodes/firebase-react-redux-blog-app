@@ -32,7 +32,15 @@ const compressAndUploadImage = (file, storageRef) => {
 };
 
 const { Text } = Typography;
-const useUpdateArticle = (articleId, articleTitle, articleTags, articleMainImageFile, articleContent, setModalVisible) => {
+const useUpdateArticle = (
+  articleId,
+  articleTitle,
+  articleTags,
+  articleMainImageFile,
+  articleContent,
+  articleContentJson,
+  setModalVisible
+) => {
   // console.log(tempDataArticleState);
   const { user } = useUser();
   const navigate = useNavigate();
@@ -139,6 +147,16 @@ const useUpdateArticle = (articleId, articleTitle, articleTags, articleMainImage
     }
   };
 
+  const updateContentJsonIfNeeded = async (articleRef, currentContentJson) => {
+    if (articleContentJson !== currentContentJson) {
+      await updateDoc(articleRef, {
+        contentJson: articleContentJson,
+        reviewStatus: "pending",
+        updatedAt: serverTimestamp(),
+      });
+    }
+  };
+
   const updateArticleStatus = async (articleRef) => {
     await updateDoc(articleRef, {
       reviewStatus: "pending",
@@ -190,6 +208,7 @@ const useUpdateArticle = (articleId, articleTitle, articleTags, articleMainImage
       await updateArticleStatus(articleRef);
       await updateTitleIfNeeded(articleRef, articleData.title);
       await updateTagsIfNeeded(articleRef, articleData.topicNames);
+      await updateContentJsonIfNeeded(articleRef, articleData.contentJson);
       await updateMainImageIfNeeded(articleRef);
       await updateContentIfNeeded(articleRef, articleData.content);
       await decrementTopicCountInPendingArticle(articleData.topicNames);

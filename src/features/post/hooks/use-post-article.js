@@ -5,6 +5,7 @@ import { addDoc, collection, serverTimestamp, query, where, limit, getDocs } fro
 import renameFile from "../../../utils/rename-file";
 import Compressor from "compressorjs";
 import { useSelector } from "react-redux";
+import { defaultContentJson } from "../post-data-slice";
 
 // Function to compress and upload images to Firebase Storage
 const compressAndUploadImage = (file, storageRef) => {
@@ -32,12 +33,21 @@ const compressAndUploadImage = (file, storageRef) => {
 };
 
 const usePostArticle = () => {
-  const { article_title, article_id, article_tags, main_image_content, article_content } = useSelector((state) => state.postData);
+  const { article_title, article_id, article_tags, main_image_content, article_content, article_content_json } = useSelector(
+    (state) => state.postData
+  );
   const { user } = useUser();
 
   const handlePostArticle = async () => {
     // Validation checks
-    if (!article_id || !article_title || !article_tags.length || !main_image_content || article_content === "<p><br></p>") {
+    if (
+      !article_id ||
+      !article_title ||
+      !article_tags.length ||
+      !main_image_content ||
+      article_content === "<p><br></p>" ||
+      article_content === defaultContentJson
+    ) {
       return {
         success: false,
         message: "judul, topics, gambar utama, dan konten harus diisi",
@@ -78,8 +88,9 @@ const usePostArticle = () => {
       }
 
       // Parse the article content to extract image IDs from the DOM
-      const currentDOMImages = new DOMParser().parseFromString(article_content, "text/html").images;
-      const currentImageIds = Array.from(currentDOMImages).map((img) => img.id);
+      const currentImageIds = article_content_json.content
+        .filter((type) => type.type === "imageNode")
+        .map((node) => node.attrs.id);
 
       // Retrieve all images currently stored in Firebase Storage for this article
       const firebaseStorageRef = ref(storage, `article-images/${user.uid}/${article_id}`);
@@ -105,6 +116,7 @@ const usePostArticle = () => {
         title: article_title,
         mainImage: mainImageDownloadUrl,
         content: article_content,
+        contentJson: article_content_json,
         articleOwnerPhotoURL: user.photoURL,
         topicNames: topicNames,
         reviewStatus: "pending", // "pending", "approved", or "rejected"

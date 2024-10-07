@@ -1,4 +1,4 @@
-import { Layout, Typography } from "antd";
+import { Layout, Skeleton, Typography } from "antd";
 import { Content } from "antd/es/layout/layout";
 import classNames from "classnames";
 import { useRef } from "react";
@@ -9,6 +9,11 @@ import { useEditArticlePage } from "./context/edit-article-page-context";
 // main component
 const { Text } = Typography;
 const EditorUpdateArticleMainImage = ({ ...props }) => {
+  const { state } = useEditArticlePage();
+
+  if (state.fetch_status.isLoading)
+    return <Skeleton.Input className="w-full min-h-[150px] sm:min-h-[300px] max-h-[200px]  sm:max-h-[300px]" active />;
+
   return (
     <Layout
       {...props}

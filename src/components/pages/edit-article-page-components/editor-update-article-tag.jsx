@@ -1,4 +1,4 @@
-import { Flex, Tag, Typography } from "antd";
+import { Flex, Skeleton, Tag, Typography } from "antd";
 import formatNumber from "../../../utils/format-number";
 import { useEditArticlePage } from "./context/edit-article-page-context";
 import useEditorUpdateArticleTags from "../../../features/edit-article/hooks/use-editor-update-article-tags";
@@ -8,6 +8,8 @@ const { Text } = Typography;
 const EditorUpdateArticleTag = ({ ...props }) => {
   const { state } = useEditArticlePage();
   const { handleInputTagChange, handleKeyDown } = useEditorUpdateArticleTags();
+
+  if (state.fetch_status.isLoading) return <Skeleton.Input className="w-full min-h-[40px]  rounded-md" active />;
 
   return (
     <div {...props}>

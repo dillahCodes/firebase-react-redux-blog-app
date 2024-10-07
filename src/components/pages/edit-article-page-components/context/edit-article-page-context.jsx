@@ -18,6 +18,13 @@ const initialState = {
   main_image_content: null,
 
   article_content: "",
+  article_content_json: null,
+
+  fetch_status: {
+    isLoading: false,
+    isError: false,
+    isSuccess: false,
+  },
 };
 
 const editArticlePageReducer = (state, action) => {
@@ -32,10 +39,14 @@ const editArticlePageReducer = (state, action) => {
       return { ...state, article_current_tag_word: action.payload };
     case "SET_ARTICLE_CONTENT":
       return { ...state, article_content: action.payload };
+    case "SET_ARTICLE_CONTENT_JSON":
+      return { ...state, article_content_json: action.payload };
     case "SET_MAIN_IMAGE_CONTENT_URL":
       return { ...state, main_image_content_url: action.payload };
     case "SET_MAIN_IMAGE_CONTENT":
       return { ...state, main_image_content: action.payload };
+    case "SET_FETCH_STATUS":
+      return { ...state, fetch_status: action.payload };
     default:
       return state;
   }
@@ -89,10 +100,11 @@ const EditArticlePageProvider = ({ children }) => {
   useEffect(() => {
     const articleDocId = params.get("id");
     if (articleDocId) {
+      dispatch({ type: "SET_FETCH_STATUS", payload: { isLoading: true, isError: false } });
       handleGetArticleByDocId(articleDocId).then((res) => {
         if (res.success) {
           const resultData = JSON.parse(JSON.stringify(res.data));
-          const { id, title, mainImage, topicNames, content } = resultData;
+          const { id, title, mainImage, topicNames, content, contentJson } = resultData;
           const topicNamesMap = topicNames.map((item) => ({
             topic_id: uuidv4(),
             topic_name: item,
@@ -102,7 +114,10 @@ const EditArticlePageProvider = ({ children }) => {
           dispatch({ type: "SET_MAIN_IMAGE_CONTENT_URL", payload: mainImage });
           dispatch({ type: "SET_ARTICLE_TAGS", payload: topicNamesMap });
           dispatch({ type: "SET_ARTICLE_CONTENT", payload: content });
+          dispatch({ type: "SET_ARTICLE_CONTENT_JSON", payload: contentJson });
+          dispatch({ type: "SET_FETCH_STATUS", payload: { isLoading: false, isError: false, isSuccess: true } });
         } else {
+          dispatch({ type: "SET_FETCH_STATUS", payload: { isLoading: false, isError: true, isSuccess: false } });
           showErrorAndRedirect(res.message);
         }
       });

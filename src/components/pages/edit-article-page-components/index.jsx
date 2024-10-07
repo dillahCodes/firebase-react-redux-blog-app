@@ -12,7 +12,7 @@ const EditArticlePageComponents = () => {
     <EditArticlePageProvider>
       <MainLayout>
         <EditArticleFloatButtons />
-        <Layout className="max-w-screen-md w-full mx-auto p-3  overflow-y-auto no-scrollbar">
+        <Layout className="max-w-screen-md w-full mx-auto p-3   no-scrollbar">
           <section className="flex flex-col gap-4 h-fit">
             <EditorUpdateArticleTitle id="edit-article-title-input" />
             <EditorUpdateArticleTag id="edit-article-tag-input" />

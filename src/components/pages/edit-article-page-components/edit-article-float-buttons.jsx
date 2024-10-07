@@ -11,13 +11,14 @@ const { Text } = Typography;
 const EditArticleFloatButtons = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { state } = useEditArticlePage();
-  const { article_id, article_title, article_tags, main_image_content, article_content } = state || {};
+  const { article_id, article_title, article_tags, main_image_content, article_content, article_content_json } = state || {};
   const { handleUpdateArticle, messageContextHolder } = useUpdateArticle(
     article_id,
     article_title,
     article_tags,
     main_image_content,
     article_content,
+    article_content_json,
     setIsModalOpen
   );
 

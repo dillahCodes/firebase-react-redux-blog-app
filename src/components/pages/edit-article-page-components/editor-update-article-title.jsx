@@ -1,4 +1,4 @@
-import { Input } from "antd";
+import { Input, Skeleton } from "antd";
 import { isBrowser } from "react-device-detect";
 import classNames from "classnames";
 import { useEditArticlePage } from "./context/edit-article-page-context";
@@ -6,6 +6,8 @@ import { useEditArticlePage } from "./context/edit-article-page-context";
 const EditorUpdateArticleTitle = ({ ...props }) => {
   const { state, dispatch } = useEditArticlePage();
   const handleChange = (e) => dispatch({ type: "SET_ARTICLE_TITLE", payload: e.target.value });
+
+  if (state.fetch_status.isLoading) return <Skeleton.Input className="w-full min-h-[40px]  rounded-md" active />;
 
   return (
     <div {...props}>

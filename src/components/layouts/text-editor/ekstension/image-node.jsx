@@ -1,6 +1,5 @@
 import { mergeAttributes, Node } from "@tiptap/core";
 import { NodeViewWrapper, ReactNodeViewRenderer } from "@tiptap/react";
-import { v4 as uuidv4 } from "uuid";
 import PropTypes from "prop-types";
 import { Skeleton } from "antd";
 
@@ -12,7 +11,7 @@ const ImageNodeVisualization = ({ node }) => {
         {isInvalid ? (
           <Skeleton.Image className="w-full h-full" active />
         ) : (
-          <img src={node.attrs.src} alt={node.attrs.alt} className="w-full h-full object-cover" />
+          <img src={node.attrs.src} alt={node.attrs.alt} id={node.attrs.id} className="w-full h-full object-cover" />
         )}
       </div>
     </NodeViewWrapper>
@@ -20,7 +19,7 @@ const ImageNodeVisualization = ({ node }) => {
 };
 
 ImageNodeVisualization.propTypes = {
-  node: PropTypes.object,
+  node: PropTypes.object.isRequired,
 };
 
 const ImageNode = Node.create({
@@ -37,11 +36,11 @@ const ImageNode = Node.create({
       alt: {
         default: null,
       },
-      id: {
-        default: uuidv4(),
-      },
       class: {
         default: "article-image-node",
+      },
+      id: {
+        default: null,
       },
     };
   },
@@ -65,7 +64,7 @@ const ImageNode = Node.create({
   addCommands() {
     return {
       setImage:
-        ({ src, alt }) =>
+        ({ src, alt, id }) =>
         ({ commands }) => {
           return commands.insertContent([
             {
@@ -73,6 +72,7 @@ const ImageNode = Node.create({
               attrs: {
                 src,
                 alt,
+                id,
               },
             },
             {

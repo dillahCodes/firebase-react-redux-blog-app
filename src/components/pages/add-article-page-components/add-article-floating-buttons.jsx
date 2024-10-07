@@ -36,7 +36,7 @@ const AddArticleFloatingButtons = ({ ...props }) => {
         open={isFloatingSendButtonActive}
         onClick={() => handleToggleFloatingButtons(state, dispatch)}
         trigger="click"
-        className=" bottom-5 z-[3]"
+        className=" bottom-5 z-20"
         icon={<FloatButtonIcon icon={<BsSend />} />}
       >
         {!isPreviewPageActive && (
