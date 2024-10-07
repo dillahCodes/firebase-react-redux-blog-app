@@ -37,21 +37,19 @@ const updateUserProfileImage = async (downloadUrl) => {
   try {
     const { currentUser } = auth;
 
-    if (!currentUser.photoURL) {
-      // Reload user data and update Firebase Auth profile
-      await reload(currentUser);
-      await updateProfile(currentUser, { photoURL: downloadUrl });
+    // Reload user data and update Firebase Auth profile
+    await reload(currentUser);
+    await updateProfile(currentUser, { photoURL: downloadUrl });
 
-      // Update photo URL in Firestore
-      const userRef = collection(db, "users-role");
-      const userQuery = query(userRef, where("user_id", "==", currentUser.uid));
-      const querySnapShot = await getDocs(userQuery);
+    // Update photo URL in Firestore
+    const userRef = collection(db, "users-role");
+    const userQuery = query(userRef, where("user_id", "==", currentUser.uid));
+    const querySnapShot = await getDocs(userQuery);
+    const userDoc = querySnapShot.docs[0];
 
-      if (!querySnapShot.empty) {
-        const userDoc = querySnapShot.docs[0];
-        await updateDoc(userDoc.ref, { photoUrl: downloadUrl });
-      }
-    }
+    if (!currentUser.photoURL && !querySnapShot.empty) {
+      await updateDoc(userDoc.ref, { photoUrl: downloadUrl });
+    } else if (!userDoc.data().photoUrl) await updateDoc(userDoc.ref, { photoUrl: downloadUrl });
 
     return {
       success: true,
@@ -75,7 +73,7 @@ const useUpdateProfileImage = () => {
 
       // Update the profile image in Firebase Auth and Firestore
       const result = await updateUserProfileImage(downloadUrl);
-      // if (result.success) setTimeout(() => window.location.reload(), 500);
+      if (result.success) setTimeout(() => window.location.reload(), 500);
 
       return result;
     } catch (error) {
