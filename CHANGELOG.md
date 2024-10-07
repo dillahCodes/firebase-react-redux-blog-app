@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.15](https://github.com/dillahCodes/firebase-react-redux-blog-app/compare/v0.0.14...v0.0.15) (2024-10-07)
+
+
+### Features
+
+* **WIP:** Testing New Tiptap Editor in Prod ([4c28d15](https://github.com/dillahCodes/firebase-react-redux-blog-app/commit/4c28d1514995cb6a0269aaab823f2f27da48316d))
+
 ### [0.0.10](https://github.com/dillahCodes/firebase-react-redux-blog-app/compare/v0.0.9...v0.0.10) (2024-10-01)
 
 ### Features
