@@ -111,8 +111,10 @@ Instructions on how to use the project after installation.
 
 3. **Set Admin Role:**
    - After logging in, check your Firebase Firestore data and change the user role to either `admin` or `super_admin` as needed.
-     ![Check User Role](https://via.placeholder.com/400x200) ![Check User Role](https://via.placeholder.com/400x200)
    - After changing the user's role, users with the `admin` or `super_admin` role will be able to unlock and access the `Admin Dashboard` menu.
+  
+   | ![Home Page](https://via.placeholder.com/400x200) | ![Task Manager](https://via.placeholder.com/400x200) |
+   |:--:|:--:|
 
 
 
