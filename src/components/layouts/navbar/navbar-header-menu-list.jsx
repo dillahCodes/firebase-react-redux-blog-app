@@ -61,7 +61,7 @@ const NavbarHeaderMenuList = () => {
       {navMenu.map((item) => (
         <Link
           key={item.key}
-          to={item.key}
+          to={"/coming-soon"}
           className={classNames("mx-1 px-4 font-special-elite min-w-fit max-lg:hidden", {
             "md:hidden": isMobile,
           })}
