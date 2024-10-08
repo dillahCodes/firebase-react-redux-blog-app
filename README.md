@@ -145,6 +145,5 @@ Provide contact information or links to other resources such as the project webs
 
 **Example:**
 - **Email**: abdillahjuniansyah93@gmail.com
-- **GitHub**: [username](https://github.com/dillahCodes)
-- **Twitter**: [@username](https://twitter.com/username)
+- **GitHub**: [dillahCodes](https://github.com/dillahCodes)
 
