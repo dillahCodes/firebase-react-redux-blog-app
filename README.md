@@ -121,10 +121,6 @@ Instructions on how to use the project after installation.
 
 
 ## **Screenshots**
-Include screenshots or GIFs of your application to showcase its appearance and features.
-
-**Example:**
-
 | ![Home Page](https://raw.githubusercontent.com/dillahCodes/github-projects-images/main/firebase-react-redux-blog-app/home-page.png) | ![Create Blog Page](https://raw.githubusercontent.com/dillahCodes/github-projects-images/main/firebase-react-redux-blog-app/create-blog-page.png) |
 |:--:|:--:|
 | *Home Page* | *Create Blog Page* |
@@ -139,10 +135,10 @@ Include screenshots or GIFs of your application to showcase its appearance and f
 
 
 ## **License**
-State the license under which the project is distributed.
+This project is licensed under the MIT License
 
-**Example:**
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+![MIT License](https://img.shields.io/badge/License-MIT-green.svg)
+
 
 ## **Contact**
 Provide contact information or links to other resources such as the project website.
