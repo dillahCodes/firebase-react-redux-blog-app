@@ -137,7 +137,7 @@ Instructions on how to use the project after installation.
 ## **License**
 This project is licensed under the MIT License
 
-![MIT License](https://img.shields.io/badge/License-MIT-green.svg)
+![MIT License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
 
 ## **Contact**
