@@ -10,6 +10,7 @@ import postDataSlice from "../features/post/post-data-slice";
 
 import { createReduxHistoryContext } from "redux-first-history";
 import { createBrowserHistory } from "history";
+import authMiddleware from "./middleware/auth-middleware";
 
 const { createReduxHistory, routerMiddleware, routerReducer } = createReduxHistoryContext({
   history: createBrowserHistory(),
@@ -46,7 +47,7 @@ const store = configureStore({
         // Ignore these paths in the state
         ignoredPaths: ["postDataState.main_image_content", "postData.main_image_content"],
       },
-    }).concat(routerMiddleware, locationMiddleware),
+    }).concat(routerMiddleware, locationMiddleware, authMiddleware),
 });
 
 export const history = createReduxHistory(store);

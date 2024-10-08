@@ -5,6 +5,8 @@ const authSlice = createSlice({
   initialState: {
     user: null,
     status: "idle", // idle, loading, succeeded, failed
+
+    redirectUserTo: null,
   },
   reducers: {
     setUser: (state, action) => {
@@ -21,8 +23,11 @@ const authSlice = createSlice({
     setStatus: (state, action) => {
       state.status = action.payload;
     },
+    setRedirectUserTo: (state, action) => {
+      state.redirectUserTo = action.payload;
+    },
   },
 });
 
 export default authSlice.reducer;
-export const { setUser, clearUser, setStatus, setUserRole } = authSlice.actions;
+export const { setUser, clearUser, setStatus, setUserRole, setRedirectUserTo } = authSlice.actions;

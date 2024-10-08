@@ -38,6 +38,7 @@ const RegisterPage = () => {
       authRegisterFormValue.confirmPassword,
       setErrorMessage
     );
+
     resultRegister && navigate("/login");
   };
 

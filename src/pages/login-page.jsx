@@ -25,9 +25,7 @@ const LogInPage = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
-    const resultLogin = await handleUserLogIn(authLoginFormValue.email, authLoginFormValue.password, setErrorMessage);
-    resultLogin && navigate("/");
+    await handleUserLogIn(authLoginFormValue.email, authLoginFormValue.password, setErrorMessage);
   };
 
   return (

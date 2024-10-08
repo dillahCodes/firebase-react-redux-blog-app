@@ -3,12 +3,16 @@ import { useEffect, useState } from "react";
 import AuthLoginForm from "../layouts/form/auth-login-form";
 import "./style/with-auth-modal-style.css";
 import useLogIn from "../../features/auth/hooks/use-logIn";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setRedirectUserTo } from "../../features/auth/auth-slice";
 
 const withAuthModal = (Component) => {
   const WrappedComponent = ({ ...props }) => {
     const { handleUserLogIn } = useLogIn();
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const location = useLocation();
 
     const [authLoginFormValue, setAuthLoginFormValue] = useState({ email: "", password: "" });
     const [errorMessage, setErrorMessage] = useState("");
@@ -32,17 +36,22 @@ const withAuthModal = (Component) => {
     const handleLogin = async (e) => {
       e.preventDefault();
 
+      dispatch(setRedirectUserTo(location.pathname));
       const resultLogin = await handleUserLogIn(authLoginFormValue.email, authLoginFormValue.password, setErrorMessage);
 
       if (resultLogin) {
         setAuthLoginFormValue({ email: "", password: "" });
         setIsModalVisible((prev) => !prev);
-        resultLogin && navigate("/");
       }
     };
 
-    const handleGoToRegister = () => navigate("/register");
-    const handleGoToForgotPassword = () => navigate("/lupa-password");
+    const handleGoToRegister = () => {
+      dispatch(setRedirectUserTo(location.pathname));
+      navigate("/register");
+    };
+    const handleGoToForgotPassword = () => {
+      navigate("/lupa-password");
+    };
 
     return (
       <>

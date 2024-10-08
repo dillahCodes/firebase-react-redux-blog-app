@@ -1,6 +1,6 @@
 import { Badge, Button, Typography } from "antd";
 import { Link, useNavigate } from "react-router-dom";
-import ButtonComponent from "../../ui/button-component";
+import ButtonComponent, { ButtonComponentWithAuthModal } from "../../ui/button-component";
 import { FaUserCircle } from "react-icons/fa";
 import PropTypes from "prop-types";
 import useUser from "../../../features/auth/hooks/use-user";
@@ -15,7 +15,7 @@ import AvatarProfile from "../../ui/avatar-profile";
 
 const { Text } = Typography;
 
-const NavbarHeaderMenuList = ({ handleOPenAuthModal }) => {
+const NavbarHeaderMenuList = () => {
   const { isAddArticleLocation, isAdminLocation } = useDetectLocation();
   const { openDrawerMenu, openDrawerNotification } = useDrawer();
   const navigate = useNavigate();
@@ -69,8 +69,7 @@ const NavbarHeaderMenuList = ({ handleOPenAuthModal }) => {
           <Text className="hover:text-[#dcfab6] transition-all font-roboto-slab duration-300 ">{item.label}</Text>
         </Link>
       ))}
-      <ButtonComponent
-        onClick={handleOPenAuthModal}
+      <ButtonComponentWithAuthModal
         icon={<FaUserCircle />}
         type="primary"
         className={classNames("capitalize border  m-1 border-black font-special-elite", {
@@ -78,7 +77,7 @@ const NavbarHeaderMenuList = ({ handleOPenAuthModal }) => {
         })}
       >
         daftar/masuk
-      </ButtonComponent>
+      </ButtonComponentWithAuthModal>
 
       {/* hamburger menu */}
       <ButtonComponent

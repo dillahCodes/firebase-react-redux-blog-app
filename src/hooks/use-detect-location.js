@@ -11,6 +11,7 @@ const useDetectLocation = () => {
     isHomePageLocation: false,
     isDetailArticleLocation: false,
     isMyArticlesLocation: false,
+    isLoginPage: false,
   });
 
   useEffect(() => {
@@ -22,6 +23,7 @@ const useDetectLocation = () => {
       isHomePageLocation: locationPath === "/",
       isDetailArticleLocation: locationPath.includes("/detail-artikel"),
       isMyArticlesLocation: locationPath.includes("/artikelku"),
+      isLoginPage: locationPath.includes("/login"),
     }));
   }, [locationPath]);
 

@@ -6,6 +6,7 @@ const useLogIn = () => {
       if (validateResult) return setErrorMessage(validateResult);
 
       await firebaseAuthServices.loginWithEmailPassWord(email, password);
+
       return true;
     } catch (error) {
       // Documentation Error list: https://firebase.google.com/docs/reference/js/auth#autherrorcodes
