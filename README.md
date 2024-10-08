@@ -113,8 +113,10 @@ Instructions on how to use the project after installation.
    - After logging in, check your Firebase Firestore data and change the user role to either `admin` or `super_admin` as needed.
    - After changing the user's role, users with the `admin` or `super_admin` role will be able to unlock and access the `Admin Dashboard` menu.
 
-| ![Home Page](https://via.placeholder.com/400x200) | ![Task Manager](https://via.placeholder.com/400x200) |
+| ![Task Manager](https://raw.githubusercontent.com/dillahCodes/github-projects-images/main/firebase-react-redux-blog-app/Screenshot%202024-10-08%20233759.png) | ![Edit User Role](https://raw.githubusercontent.com/dillahCodes/github-projects-images/main/firebase-react-redux-blog-app/Screenshot%202024-10-08%20232152.png) |
 |:--:|:--:|
+
+
 
 
 
