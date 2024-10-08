@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.17](https://github.com/dillahCodes/firebase-react-redux-blog-app/compare/v0.0.16...v0.0.17) (2024-10-08)
+
+
+### Features
+
+* add redirect in with auth blur HOC ([c09c5fe](https://github.com/dillahCodes/firebase-react-redux-blog-app/commit/c09c5fe7c23f17de18ea02338224d813aeb3869b))
+
 ### [0.0.16](https://github.com/dillahCodes/firebase-react-redux-blog-app/compare/v0.0.15...v0.0.16) (2024-10-08)
 
 
