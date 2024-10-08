@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.16](https://github.com/dillahCodes/firebase-react-redux-blog-app/compare/v0.0.15...v0.0.16) (2024-10-08)
+
+
+### Features
+
+* Add redirect feature after user login or registration for features that require authentication. ([4cd9f34](https://github.com/dillahCodes/firebase-react-redux-blog-app/commit/4cd9f349d13d461f52f076c591209036d4bf6308))
+
+
+### Bug Fixes
+
+* fix profil image not update after changed in prod ([5ad5b77](https://github.com/dillahCodes/firebase-react-redux-blog-app/commit/5ad5b77de1325ca499ab4c9b84f0cbf9082a1802))
+* fix update profile image bug ([b84ae59](https://github.com/dillahCodes/firebase-react-redux-blog-app/commit/b84ae59d816e8ce35d40ab72dc3f56710374fca5))
+* **WIP:** bug user profile image not change after update ([533d2ef](https://github.com/dillahCodes/firebase-react-redux-blog-app/commit/533d2efb44fd17e486894e6c07d38a48402f2a57))
+
 ### [0.0.15](https://github.com/dillahCodes/firebase-react-redux-blog-app/compare/v0.0.14...v0.0.15) (2024-10-07)
 
 
