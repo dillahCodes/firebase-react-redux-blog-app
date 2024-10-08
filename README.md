@@ -144,7 +144,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 Provide contact information or links to other resources such as the project website.
 
 **Example:**
-- **Email**: your.email@example.com
-- **GitHub**: [username](https://github.com/username)
+- **Email**: abdillahjuniansyah93@gmail.com
+- **GitHub**: [username](https://github.com/dillahCodes)
 - **Twitter**: [@username](https://twitter.com/username)
 
