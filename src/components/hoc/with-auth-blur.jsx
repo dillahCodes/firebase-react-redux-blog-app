@@ -1,10 +1,14 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import useUser from "../../features/auth/hooks/use-user";
 import ButtonComponent from "../ui/button-component";
 import PropTypes from "prop-types";
+import { useDispatch } from "react-redux";
+import { setRedirectUserTo } from "../../features/auth/auth-slice";
 
 const withAuthBlur = (Component) => {
   const WrappedComponent = ({ iconButton, textButton, ...props }) => {
+    const location = useLocation();
+    const dispatch = useDispatch();
     const { user } = useUser();
     const navigate = useNavigate();
 
@@ -16,7 +20,10 @@ const withAuthBlur = (Component) => {
       <div className="w-full relative">
         <div className="absolute inset-0 flex justify-center items-center z-10">
           <ButtonComponent
-            onClick={() => navigate("/login")}
+            onClick={() => {
+              dispatch(setRedirectUserTo(location.pathname));
+              navigate("/login");
+            }}
             type="primary"
             className="capitalize text-xs font-roboto-slab cursor-pointer flex items-center"
             icon={iconButton}
