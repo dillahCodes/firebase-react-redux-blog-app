@@ -1,4 +1,4 @@
-# **Project Name**
+# **Firebase React Redux Blog App**
 
 ## **Table of Contents**
 1. [Introduction](#introduction)
@@ -7,37 +7,43 @@
 4. [Installation](#installation)
 5. [Usage](#usage)
 6. [Screenshots](#screenshots)
-7. [Contributing](#contributing)
-8. [License](#license)
-9. [Contact](#contact)
+7. [License](#license)
+8. [Contact](#contact)
 
 ---
 
 ## **Introduction**
-A brief overview of what your project does, why it was created, and any key background information.
+> This project serves as a learning tool for gaining a deeper understanding of React.js, focusing on concepts such as Higher-Order Components (HOC), and exploring state management using Redux Toolkit (RTK). It also offers an opportunity to implement Firebase Firestore for database management, Firebase Storage for file handling, and Firebase Authentication for user management.
+Additionally, I have implemented middleware concepts in Redux Toolkit (RTK) within this project to enhance the state management workflow and handle side effects.
 
-**Example:**
-> Project Name is a web-based application that allows users to manage tasks efficiently. It was built to improve productivity and simplify task management in daily routines.
 
 ## **Features**
-List of the major features of the project.
+This project includes several key features that enhance the user experience and functionality:
 
-- Feature 1
-- Feature 2
-- Feature 3
+- **CRUD Operations for Blog Posts**: Users can create, read, update, and delete blog posts seamlessly, allowing for dynamic content management.
+- **User Authentication and Authorization**: Implemented secure login and registration processes, ensuring that only authorized users can access certain features.
+- **Admin Dashboard**: An intuitive admin dashboard that allows administrators to manage users, blog posts, and site settings effectively.
+- **Like Blog Posts**: Users can like blog posts, fostering engagement and interaction within the community.
+- **Infinite Scrolling**: Users can scroll through blog posts without interruptions, as more content loads automatically as they reach the bottom of the page.
+- **Pagination**: For better navigation, blog posts can be displayed in pages, allowing users to browse through content efficiently.
 
-**Example:**
-- User authentication
-- Task creation, editing, and deletion
-- Real-time notifications
 
 ## **Tech Stack**
-List the technologies and tools used in this project.
+List the technologies and tools used in this project.  
 
-- **Frontend**: React, Redux
-- **Backend**: Node.js, Express
-- **Database**: MongoDB
-- **Other Tools**: Docker, Firebase
+![Static Badge](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=61DAFB&labelColor=black) ![Static Badge](https://img.shields.io/badge/Node.js-8CC84B?style=for-the-badge&logo=nodedotjs&logoColor=8CC84B&labelColor=black) ![Static Badge](https://img.shields.io/badge/Redux%20Toolkit-764ABC?style=for-the-badge&logo=redux&logoColor=764ABC&labelColor=black)
+ ![Static Badge](https://img.shields.io/badge/Firebase-DD2C00?style=for-the-badge&logo=firebase&logoColor=%23DD2C00&labelColor=black) ![Ant Design Badge](https://img.shields.io/badge/Ant%20Design-0170FE?style=for-the-badge&logo=antdesign&logoColor=white) ![Static Badge](https://img.shields.io/badge/React%20Router-CA4245?style=for-the-badge&logo=reactrouter&logoColor=CA4245&labelColor=black) ![Static Badge](https://img.shields.io/badge/tailwind%20css-%2306B6D4?style=for-the-badge&logo=tailwindcss&logoColor=%2306B6D4&labelColor=black) ![Static Badge](https://img.shields.io/badge/vite-%23F16728?style=for-the-badge&logo=vite&logoColor=%23F16728&labelColor=black) ![Static Badge](https://img.shields.io/badge/javascript-%23F7DF1E?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E&labelColor=black)
+
+
+
+
+
+
+
+
+
+
+
 
 ## **Installation**
 Step-by-step guide on how to set up and run the project locally.
@@ -45,14 +51,13 @@ Step-by-step guide on how to set up and run the project locally.
 ### Prerequisites
 - Node.js
 - Git
-- MongoDB (or other database)
 
 ### Steps
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/username/project-name.git
-    cd project-name
+    git clone https://github.com/dillahCodes/firebase-react-redux-blog-app.git
+    cd firebase-react-redux-blog-app
     ```
 
 2. Install dependencies:
@@ -62,24 +67,54 @@ Step-by-step guide on how to set up and run the project locally.
 
 3. Set up environment variables by creating a `.env` file in the root directory (provide an example if needed):
     ```bash
-    MONGO_URI=your-mongo-uri
-    API_KEY=your-api-key
+    VITE_FIREBASE_API_KEY=your_firebase_api_key
+    VITE_FIREBASE_AUTH_DOMAIN=your_firebase_auth_domain
+    VITE_FIREBASE_PROJECT_ID=your_firebase_project_id
+    VITE_FIREBASE_STORAGE_BUCKET=your_firebase_storage_bucket
+    VITE_FIREBASE_MESSAGING_SENDER_ID=your_firebase_messaging_sender_id
+    VITE_FIREBASE_APP_ID=your_firebase_app_id
+    VITE_FIREBASE_MEASUREMENT_ID=your_firebase_measurement_id
+    VITE_USE_FIREBASE_EMULATOR=true # set to true to use firebase emulators or false to use in production
     ```
 
-4. Start the development server:
+4. Start the development FrontEnd server:
     ```bash
     npm run dev
     ```
+4. Start the development Database Server:
+    ```bash
+    npm run db
+    ```
 
-5. Open the app on `http://localhost:3000`
+5. Local FrontEnd Server `http://localhost:5173`
+6. Local Firebase Server `http://127.0.0.1:4000`
+7. Available Script:
+    ```bash
+    npm run dev
+    npm run db
+    npm run build
+    npm run preview
+    npm run release
+    npm run lint
+    ```
+
 
 ## **Usage**
 Instructions on how to use the project after installation.
 
-**Example:**
-- Register for an account
-- Login and start creating tasks
-- Add, edit, or delete tasks using the intuitive interface
+1. **Create an Account:**
+   - Navigate to the registration page.
+   - Fill in the required details to create your account.
+
+2. **Login:**
+   - Use your registered email and password to log in to the application.
+
+3. **Set Admin Role:**
+   - After logging in, check your Firebase Firestore data and change the user role to either `admin` or `super_admin` as needed.
+     ![Check User Role](https://via.placeholder.com/400x200) ![Check User Role](https://via.placeholder.com/400x200)
+   - After changing the user's role, users with the `admin` or `super_admin` role will be able to unlock and access the `Admin Dashboard` menu.
+
+
 
 ## **Screenshots**
 Include screenshots or GIFs of your application to showcase its appearance and features.
@@ -89,18 +124,6 @@ Include screenshots or GIFs of your application to showcase its appearance and f
 | ![Home Page](https://via.placeholder.com/400x200) | ![Task Manager](https://via.placeholder.com/400x200) |
 |:--:|:--:|
 | *Home Page* | *Task Management* |
-
-## **Contributing**
-Provide guidelines on how others can contribute to your project. 
-
-**Example:**
-- Fork the repository
-- Create a new branch (`git checkout -b feature-branch`)
-- Commit your changes (`git commit -m 'Add a new feature'`)
-- Push to the branch (`git push origin feature-branch`)
-- Create a pull request
-
-For detailed contribution guidelines, check out `CONTRIBUTING.md` (optional).
 
 ## **License**
 State the license under which the project is distributed.
