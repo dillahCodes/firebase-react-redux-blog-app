@@ -125,9 +125,14 @@ Include screenshots or GIFs of your application to showcase its appearance and f
 
 **Example:**
 
-| ![Home Page](https://via.placeholder.com/400x200) | ![Task Manager](https://via.placeholder.com/400x200) |
+| ![Home Page](https://raw.githubusercontent.com/dillahCodes/github-projects-images/main/firebase-react-redux-blog-app/home-page.png) | ![Create Blog Page](https://raw.githubusercontent.com/dillahCodes/github-projects-images/main/firebase-react-redux-blog-app/create-blog-page.png) |
 |:--:|:--:|
-| *Home Page* | *Task Management* |
+| *Home Page* | *Create Blog Page* |
+| ![Dashboard Admin Page](https://raw.githubusercontent.com/dillahCodes/github-projects-images/main/firebase-react-redux-blog-app/dashboard-admin-page.png) | ![Edit Profile Page](https://raw.githubusercontent.com/dillahCodes/github-projects-images/main/firebase-react-redux-blog-app/edit-profile-page.png) |
+| *Dashboard Admin Page* | *Edit Profile Page* |
+| ![My Article Page](https://raw.githubusercontent.com/dillahCodes/github-projects-images/main/firebase-react-redux-blog-app/my-article-page.png) | |
+| *My Article Page* | |
+
 
 ## **License**
 State the license under which the project is distributed.
