@@ -4,10 +4,12 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import useLogIn from "../features/auth/hooks/use-logIn";
 import AuthLoginForm from "../components/layouts/form/auth-login-form";
+import { useSelector } from "react-redux";
 
 const LogInPage = () => {
   const { handleUserLogIn } = useLogIn();
   const navigate = useNavigate();
+  const redirectTo = useSelector((state) => state.auth.redirectUserTo);
 
   const [authLoginFormValue, setAuthLoginFormValue] = useState({ email: "", password: "" });
   const [errorMessage, setErrorMessage] = useState("");
@@ -25,7 +27,8 @@ const LogInPage = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    await handleUserLogIn(authLoginFormValue.email, authLoginFormValue.password, setErrorMessage);
+    const result = await handleUserLogIn(authLoginFormValue.email, authLoginFormValue.password, setErrorMessage);
+    !redirectTo && result && navigate("/");
   };
 
   return (
