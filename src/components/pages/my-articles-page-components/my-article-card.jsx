@@ -1,17 +1,18 @@
-import { BsInfoCircle, BsThreeDotsVertical } from "react-icons/bs";
-import { myThemeConfigs } from "../../../theme/antd-theme";
 import { Button, Dropdown, Flex, Typography } from "antd";
-import ButtonComponent from "../../ui/button-component";
-import { MdAccessTime } from "react-icons/md";
-import { IoIosCheckmarkCircleOutline } from "react-icons/io";
 import classNames from "classnames";
-import { IoCloseCircleOutline, IoEyeOutline } from "react-icons/io5";
 import PropTypes from "prop-types";
-import { FaRegTrashAlt } from "react-icons/fa";
 import { AiOutlineEdit } from "react-icons/ai";
-import { useMyArticlesPage } from "./context/my-articles-page-context";
+import { BsInfoCircle, BsThreeDotsVertical } from "react-icons/bs";
+import { FaRegTrashAlt } from "react-icons/fa";
+import { IoIosCheckmarkCircleOutline } from "react-icons/io";
+import { IoCloseCircleOutline, IoEyeOutline } from "react-icons/io5";
+import { MdAccessTime } from "react-icons/md";
 import useHandleArticleOptions from "../../../features/myarticle/hooks/use-handle-article-options";
 import usePreviewArticle from "../../../features/myarticle/hooks/use-preview-article";
+import { myThemeConfigs } from "../../../theme/antd-theme";
+import withModal from "../../hoc/with-modal";
+import ButtonComponent from "../../ui/button-component";
+import { useMyArticlesPage } from "./context/my-articles-page-context";
 
 const { Text, Title } = Typography;
 const MyArticleCard = ({ articleId }) => {
@@ -19,6 +20,7 @@ const MyArticleCard = ({ articleId }) => {
   const { handlePreviewArticle } = usePreviewArticle();
   const title = state.articleData?.find((article) => article.doc_id === articleId)?.title;
   const status = state.articleData?.find((article) => article.doc_id === articleId)?.reviewStatus;
+  const rejectedReason = state.articleData?.find((article) => article.doc_id === articleId)?.reasonRejected;
 
   return (
     <div
@@ -47,7 +49,7 @@ const MyArticleCard = ({ articleId }) => {
         </Flex>
 
         {/* status */}
-        <StatusCard status={status} />
+        <StatusCard status={status} reasonRejected={rejectedReason} />
       </Flex>
     </div>
   );
@@ -122,7 +124,8 @@ LabelOptions.propTypes = {
   text: PropTypes.string.isRequired,
 };
 
-const StatusCard = ({ status }) => {
+const TextWithModal = withModal(Text);
+const StatusCard = ({ status, reasonRejected }) => {
   const iconCondition = (status) => {
     switch (status) {
       case "pending":
@@ -173,13 +176,23 @@ const StatusCard = ({ status }) => {
       </ButtonComponent>
 
       {status === "rejected" && (
-        <Text
+        <TextWithModal
+          modalTitle={
+            <Title className="p-2" level={5}>
+              Alasan Penolakan
+            </Title>
+          }
+          modalContent={
+            <div className="p-2">
+              <Text>{reasonRejected}</Text>
+            </div>
+          }
           className={classNames("font-roboto-slab text-[10px] underline capitalize cursor-pointer  transition-all duration-300", {
             "text-red-700": status === "rejected",
           })}
         >
           alasan penolakan
-        </Text>
+        </TextWithModal>
       )}
     </Flex>
   );
@@ -187,4 +200,5 @@ const StatusCard = ({ status }) => {
 
 StatusCard.propTypes = {
   status: PropTypes.string,
+  reasonRejected: PropTypes.string,
 };
