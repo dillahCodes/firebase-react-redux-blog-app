@@ -2,8 +2,6 @@ import { collection, getDocs, limit, orderBy, query, where } from "firebase/fire
 import { useCallback, useEffect, useState } from "react";
 import { db } from "../../../firebase/firebase-services";
 import useUser from "../../auth/hooks/use-user";
-// import { useDispatch } from "react-redux";
-// import { hideSearchBarResult } from "../../../store/slices/header-slice";
 
 const useSearchArticle = ({ searchKeyword }) => {
   const { user } = useUser();
@@ -25,16 +23,16 @@ const useSearchArticle = ({ searchKeyword }) => {
 
       const articleDocRef = query(
         collection(db, "articles"),
+        orderBy("title", "asc"), // orderBy must come before where
         where("title", ">=", searchKeyword),
         where("title", "<=", searchKeyword + "\uf8ff"),
         where("reviewStatus", "==", "approved"),
-        orderBy("title", "asc"),
         limit(6)
       );
 
       const querySnapShot = await getDocs(articleDocRef);
-      const articleList = querySnapShot.empty ? [] : querySnapShot.docs.map((doc) => ({ doc_id: doc.id, ...doc.data() }));
-      querySnapShot.empty ? setArticleList([]) : setArticleList(JSON.parse(JSON.stringify(articleList)));
+      const articles = querySnapShot.docs.map((doc) => ({ doc_id: doc.id, ...doc.data() }));
+      setArticleList(articles);
 
       setFetchStatus({ isLoading: false, isError: false });
     } catch (error) {
