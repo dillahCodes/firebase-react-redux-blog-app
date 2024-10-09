@@ -27,6 +27,7 @@ const useSearchArticle = ({ searchKeyword }) => {
         collection(db, "articles"),
         where("title", ">=", searchKeyword),
         where("title", "<=", searchKeyword + "\uf8ff"),
+        where("reviewStatus", "==", "approved"),
         orderBy("title", "asc"),
         limit(6)
       );
