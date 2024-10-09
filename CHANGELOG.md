@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.18](https://github.com/dillahCodes/firebase-react-redux-blog-app/compare/v0.0.17...v0.0.18) (2024-10-09)
+
+
+### Bug Fixes
+
+* fix search result showing pending article ([981011a](https://github.com/dillahCodes/firebase-react-redux-blog-app/commit/981011a3b7e44dd937f3d1566213e1ec74f2d81a))
+* search result not showing ([fb19eb0](https://github.com/dillahCodes/firebase-react-redux-blog-app/commit/fb19eb02bd6e649f3630bb1b8275a97079251a54))
+* update redirect to home after login ([75d875c](https://github.com/dillahCodes/firebase-react-redux-blog-app/commit/75d875c09030a8fdbcfc09fc6cba224b11fe9cc0))
+
 ### [0.0.17](https://github.com/dillahCodes/firebase-react-redux-blog-app/compare/v0.0.16...v0.0.17) (2024-10-08)
 
 
