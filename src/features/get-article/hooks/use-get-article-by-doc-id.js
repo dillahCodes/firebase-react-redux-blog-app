@@ -1,8 +1,10 @@
 import { doc, onSnapshot } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "../../../firebase/firebase-services";
+import { useNavigate } from "react-router-dom";
 
 const useGetArticleByDocId = ({ articleDocId }) => {
+  const navigate = useNavigate();
   const [fetchStatus, setFetchStatus] = useState({
     isLoading: false,
     isError: false,
@@ -26,8 +28,18 @@ const useGetArticleByDocId = ({ articleDocId }) => {
       articleDocRef,
       (docSnap) => {
         if (docSnap.exists()) {
-          setArticleData(JSON.parse(JSON.stringify(docSnap.data())));
-          setFetchStatus({ isLoading: false, isError: false });
+          const article = docSnap.data();
+
+          // Check if the article's reviewStatus is "approved"
+          if (article.reviewStatus === "approved") {
+            setArticleData(JSON.parse(JSON.stringify(article)));
+            setFetchStatus({ isLoading: false, isError: false });
+          } else {
+            // If the article is not approved, treat it as an error or ignore
+            navigate(-1);
+            console.error("Article is not approved!");
+            setFetchStatus({ isLoading: false, isError: true });
+          }
         } else {
           console.error("No such document!");
           setFetchStatus({ isLoading: false, isError: true });
