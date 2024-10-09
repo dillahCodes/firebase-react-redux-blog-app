@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.19](https://github.com/dillahCodes/firebase-react-redux-blog-app/compare/v0.0.18...v0.0.19) (2024-10-09)
+
+
+### Features
+
+* add modal rejected reason message ([23a7e27](https://github.com/dillahCodes/firebase-react-redux-blog-app/commit/23a7e27a9b0f6e9806039271292f7b4f2aca1f4e))
+
 ### [0.0.18](https://github.com/dillahCodes/firebase-react-redux-blog-app/compare/v0.0.17...v0.0.18) (2024-10-09)
 
 
