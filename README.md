@@ -131,9 +131,6 @@ This project is licensed under the MIT License
 
 
 ## **Contact**
-Provide contact information or links to other resources such as the project website.
-
-**Example:**
 - **Email**: abdillahjuniansyah93@gmail.com
 - **GitHub**: [dillahCodes](https://github.com/dillahCodes)
 
