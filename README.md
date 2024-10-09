@@ -25,7 +25,8 @@ This project includes several key features that enhance the user experience and 
 - **Admin Dashboard**: An intuitive admin dashboard that allows administrators to manage users, blog posts, and site settings effectively.
 - **Like Blog Posts**: Users can like blog posts, fostering engagement and interaction within the community.
 - **Infinite Scrolling**: Users can scroll through blog posts without interruptions, as more content loads automatically as they reach the bottom of the page.
-- **Pagination**: For better navigation, blog posts can be displayed in pages, allowing users to browse through content efficiently.
+- **Pagination**: Pagination is applied specifically to the table of approved blog posts in the admin dashboard, making it easier to navigate through the content.
+- **Edit User Profile**: Users can update their profile by editing their username, password, email, and profile picture, as well as verifying their email address.
 
 
 ## **Tech Stack**
@@ -33,17 +34,6 @@ List the technologies and tools used in this project.
 
 ![Static Badge](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=61DAFB&labelColor=black) ![Static Badge](https://img.shields.io/badge/Node.js-8CC84B?style=for-the-badge&logo=nodedotjs&logoColor=8CC84B&labelColor=black) ![Static Badge](https://img.shields.io/badge/Redux%20Toolkit-764ABC?style=for-the-badge&logo=redux&logoColor=764ABC&labelColor=black)
  ![Static Badge](https://img.shields.io/badge/Firebase-DD2C00?style=for-the-badge&logo=firebase&logoColor=%23DD2C00&labelColor=black) ![Ant Design Badge](https://img.shields.io/badge/Ant%20Design-0170FE?style=for-the-badge&logo=antdesign&logoColor=white) ![Static Badge](https://img.shields.io/badge/React%20Router-CA4245?style=for-the-badge&logo=reactrouter&logoColor=CA4245&labelColor=black) ![Static Badge](https://img.shields.io/badge/tailwind%20css-%2306B6D4?style=for-the-badge&logo=tailwindcss&logoColor=%2306B6D4&labelColor=black) ![Static Badge](https://img.shields.io/badge/vite-%23F16728?style=for-the-badge&logo=vite&logoColor=%23F16728&labelColor=black) ![Static Badge](https://img.shields.io/badge/javascript-%23F7DF1E?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E&labelColor=black)
-
-
-
-
-
-
-
-
-
-
-
 
 ## **Installation**
 Step-by-step guide on how to set up and run the project locally.
@@ -141,9 +131,6 @@ This project is licensed under the MIT License
 
 
 ## **Contact**
-Provide contact information or links to other resources such as the project website.
-
-**Example:**
 - **Email**: abdillahjuniansyah93@gmail.com
 - **GitHub**: [dillahCodes](https://github.com/dillahCodes)
 
