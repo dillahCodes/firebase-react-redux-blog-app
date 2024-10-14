@@ -1,4 +1,4 @@
-import { Layout } from "antd";
+import { Layout, message } from "antd";
 import { myThemeConfigs } from "../theme/antd-theme";
 import { useNavigate } from "react-router-dom";
 import useRegister from "../features/auth/hooks/use-register";
@@ -6,8 +6,9 @@ import { useEffect, useState } from "react";
 import AuthRegisterForm from "../components/layouts/form/auth-register-form";
 
 const RegisterPage = () => {
+  const [messageApi, contextHolder] = message.useMessage();
   const navigate = useNavigate();
-  const { handleUserRegister } = useRegister();
+  const { handleUserRegister, isLoading } = useRegister();
 
   const [authRegisterFormValue, setAuthRegisterFormValue] = useState({
     email: "",
@@ -39,11 +40,20 @@ const RegisterPage = () => {
       setErrorMessage
     );
 
-    resultRegister && navigate("/login");
+    resultRegister &&
+      messageApi.open({
+        type: "success",
+        content: "Akunmu sudah terdaftar, silahkan login🚀",
+      });
+
+    setTimeout(() => {
+      resultRegister && navigate("/login");
+    }, 700);
   };
 
   return (
     <Layout className="min-h-screen flex items-center justify-center min-w-[320px]">
+      {contextHolder}
       <div
         className={`max-w-screen-sm w-full  rounded-md  `}
         style={{ border: "2px solid", borderColor: myThemeConfigs.token.colorText }}
@@ -51,6 +61,7 @@ const RegisterPage = () => {
         <AuthRegisterForm
           handleSubmit={handleRegister}
           errorMessage={errorMessage}
+          isLoading={isLoading}
           handleGoToLogin={() => navigate("/login")}
           handleInputChange={handleAuthRegisterFormChange}
           inputEmailValue={authRegisterFormValue.email}

@@ -14,6 +14,7 @@ const AuthRegisterForm = ({
   inputPasswordValue,
   inputConfirmPasswordValue,
   errorMessage,
+  isLoading,
 }) => {
   return (
     <form className="min-w-full  p-3" onSubmit={handleSubmit}>
@@ -68,11 +69,7 @@ const AuthRegisterForm = ({
       </div>
 
       <div className="w-full mt-3">
-        <label
-          htmlFor="password"
-          className="font-roboto-slab capitalize mt-3"
-          style={{ color: myThemeConfigs.token.colorText }}
-        >
+        <label htmlFor="password" className="font-roboto-slab capitalize mt-3" style={{ color: myThemeConfigs.token.colorText }}>
           password
           <span className="text-red-500">*</span>
         </label>
@@ -114,7 +111,7 @@ const AuthRegisterForm = ({
         </Text>
       </Flex>
 
-      <ButtonComponent type="primary" size="large" htmlType="submit" className="w-full mt-3 font-roboto-slab">
+      <ButtonComponent loading={isLoading} type="primary" size="large" htmlType="submit" className="w-full mt-3 font-roboto-slab">
         Daftar
       </ButtonComponent>
     </form>
@@ -132,4 +129,5 @@ AuthRegisterForm.propTypes = {
   inputPasswordValue: PropTypes.string,
   inputConfirmPasswordValue: PropTypes.string,
   errorMessage: PropTypes.string,
+  isLoading: PropTypes.bool,
 };

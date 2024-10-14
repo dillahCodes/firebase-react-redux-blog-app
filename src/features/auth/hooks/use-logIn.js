@@ -1,14 +1,24 @@
+import { useState } from "react";
 import firebaseAuthServices from "../firebase-auth-services";
 const useLogIn = () => {
+  const [isLaoding, setIsLoading] = useState(false);
+
   const handleUserLogIn = async (email, password, setErrorMessage) => {
     try {
+      setIsLoading(true);
       const validateResult = validateLogin(email, password);
-      if (validateResult) return setErrorMessage(validateResult);
+      if (validateResult) {
+        setIsLoading(false);
+        return setErrorMessage(validateResult);
+      }
 
       await firebaseAuthServices.loginWithEmailPassWord(email, password);
 
+      setIsLoading(false);
       return true;
     } catch (error) {
+      setIsLoading(false);
+
       // Documentation Error list: https://firebase.google.com/docs/reference/js/auth#autherrorcodes
       let errorMessage = "";
       let translateErrorMessage = "";
@@ -34,6 +44,7 @@ const useLogIn = () => {
 
   return {
     handleUserLogIn,
+    isLaoding,
   };
 };
 

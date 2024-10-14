@@ -13,6 +13,7 @@ const AuthLoginForm = ({
   inputEmailValue,
   inputPasswordValue,
   errorMessage,
+  isLoading,
 }) => {
   return (
     <form className="min-w-full  p-3" onSubmit={handleSubmit}>
@@ -78,7 +79,7 @@ const AuthLoginForm = ({
         </Text>
       </Flex>
 
-      <ButtonComponent type="primary" size="large" htmlType="submit" className="w-full mt-3 font-roboto-slab">
+      <ButtonComponent loading={isLoading} type="primary" size="large" htmlType="submit" className="w-full mt-3 font-roboto-slab">
         masuk
       </ButtonComponent>
     </form>
@@ -95,4 +96,5 @@ AuthLoginForm.propTypes = {
   inputEmailValue: PropTypes.string,
   inputPasswordValue: PropTypes.string,
   errorMessage: PropTypes.string,
+  isLoading: PropTypes.bool,
 };

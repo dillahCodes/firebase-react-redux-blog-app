@@ -1,12 +1,17 @@
 import { auth } from "../../../firebase/firebase-services";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { setUserRole as handleSetUserRole } from "../set-user-role";
+import { useState } from "react";
 
 const useRegister = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleUserRegister = async (email, password, displayName, confirmPassword, setErrorMessage) => {
     try {
+      setIsLoading(true);
       const validateResult = validateRegister(email, password, displayName, confirmPassword);
       if (validateResult) {
+        setIsLoading(false);
         setErrorMessage(validateResult);
         return false;
       }
@@ -16,10 +21,12 @@ const useRegister = () => {
       await updateProfile(result.user, { displayName });
 
       // create user role
-      handleSetUserRole(result.user.uid, result.user.email, result.user.displayName, result.user.photoURL);
+      await handleSetUserRole(result.user.uid, result.user.email, result.user.displayName, result.user.photoURL);
 
+      setIsLoading(false);
       return true;
     } catch (error) {
+      setIsLoading(false);
       let errorMessage = "";
       let translateErrorMessage = "";
 
@@ -52,6 +59,7 @@ const useRegister = () => {
 
   return {
     handleUserRegister,
+    isLoading,
   };
 };
 
