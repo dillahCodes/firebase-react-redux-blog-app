@@ -1,5 +1,13 @@
 # **Firebase React Redux Blog App**
 
+## **Demo**
+
+Check out the live demo of the **Firebase React Redux Blog App**:
+
+[![Firebase React Redux Blog App](https://img.shields.io/badge/Demo-Click%20Here-blue?style=for-the-badge)](https://firebase-react-redux-blog-app.vercel.app/)
+
+
+
 ## **Table of Contents**
 1. [Introduction](#introduction)
 2. [Features](#features)
@@ -21,7 +29,7 @@ Additionally, I have implemented middleware concepts in Redux Toolkit (RTK) with
 This project includes several key features that enhance the user experience and functionality:
 
 - **CRUD Operations for Blog Posts**: Users can create, read, update, and delete blog posts seamlessly, allowing for dynamic content management.
-- **User Authentication and Authorization**: Implemented secure login and registration processes, ensuring that only authorized users can access certain features.
+- **User Authentication and Authorization**: Implemented secure login and registration processes, including a forgot password feature to facilitate account recovery. Ensured that only authorized users can access specific features, enhancing overall security.
 - **Admin Dashboard**: An intuitive admin dashboard that allows administrators to manage users, blog posts, and site settings effectively.
 - **Like Blog Posts**: Users can like blog posts, fostering engagement and interaction within the community.
 - **Infinite Scrolling**: Users can scroll through blog posts without interruptions, as more content loads automatically as they reach the bottom of the page.
