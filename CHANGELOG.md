@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.20](https://github.com/dillahCodes/firebase-react-redux-blog-app/compare/v0.0.19...v0.0.20) (2024-10-14)
+
+
+### Bug Fixes
+
+* **auth:** resolve redirect bug and add loading state during login/register ([df38d23](https://github.com/dillahCodes/firebase-react-redux-blog-app/commit/df38d23ef150199772d7d18ce54b853163921aa3))
+
 ### [0.0.19](https://github.com/dillahCodes/firebase-react-redux-blog-app/compare/v0.0.18...v0.0.19) (2024-10-09)
 
 
