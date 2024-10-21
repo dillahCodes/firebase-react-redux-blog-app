@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "blog-app-react-redux-toolkit"
-  }
+    "default": "blog-app-react-redux-toolkit",
+    "fir-blog-prod": "fir-react-redux-blog-app"
+  },
+  "targets": {},
+  "etags": {}
 }

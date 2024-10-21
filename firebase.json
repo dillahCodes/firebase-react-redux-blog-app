@@ -6,7 +6,13 @@
     "ui": {
       "enabled": true
     },
-    "singleProjectMode": true
+    "singleProjectMode": true,
+    "firestore": {
+      "port": 8080
+    },
+    "storage": {
+      "port": 9199
+    }
   },
   "firestore": {
     "rules": "firestore.rules",

@@ -17,6 +17,7 @@ const handleUserStateChange = (dispatch, currentUser) => {
   setTimeout(() => {
     if (currentUser.displayName) {
       const userData = setUserData(currentUser);
+      console.log(JSON.parse(JSON.stringify(userData)));
       dispatch(setUser(userData));
       dispatch(getUserRole(currentUser.uid, currentUser.email, currentUser.emailVerified));
       dispatch(setStatus("succeeded"));
